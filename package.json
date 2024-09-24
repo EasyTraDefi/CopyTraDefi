@@ -1,7 +1,8 @@
 {
   "name": "@base-project/source",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "anchor": "nx run anchor:anchor",
     "anchor-build": "nx run anchor:anchor build",
@@ -28,7 +29,9 @@
     "bs58": "5.0.0",
     "buffer": "6.0.3",
     "daisyui": "4.11.1",
+    "dotenv": "^16.4.5",
     "encoding": "0.1.13",
+    "helius-sdk": "^1.3.5",
     "jotai": "2.8.3",
     "next": "14.2.3",
     "react": "18.3.1",
