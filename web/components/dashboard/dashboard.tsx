@@ -3,9 +3,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { TradeCard } from '../trade-card/trade-card';
-import { TransactionHistory } from '../transaction-history/transaction-history';
+import TradeCard from '../trade-card/trade-card';
 import { TradeData } from '~/types/trade-data';
+import { TransactionHistory } from '../transaction-history/transaction-history';
 import { TransactionData } from '~/types/transaction-data';
 import { fetchTrades, fetchTransactions } from '../../utils/apiCalls';
 
@@ -75,61 +75,3 @@ export function Dashboard({ }: DashboardProps) {
         </div>
     );
 }
-
-// // components/dashboard/dashboard.tsx
-
-// 'use client';
-
-// import { useState, useEffect } from 'react';
-// import { TradeCard } from '../trade-card/trade-card';
-// import { TransactionHistory } from '../transaction-history/transaction-history';
-// import { TradeData } from '~/types/trade-data';
-// import { TransactionData } from '~/types/transaction-data';
-// import { fetchTrades, fetchTransactions } from '../../utils/apiCalls';
-
-// interface DashboardProps { }
-
-// export function Dashboard({ }: DashboardProps) {
-//     const [trades, setTrades] = useState<TradeData[]>([]);
-//     const [transactions, setTransactions] = useState<TransactionData[]>([]);
-
-//     useEffect(() => {
-//         async function fetchData() {
-//             try {
-//                 const fetchedTrades = await fetchTrades();
-//                 setTrades(fetchedTrades);
-
-//                 const fetchedTransactions = await fetchTransactions();
-//                 setTransactions(fetchedTransactions);
-//             } catch (error) {
-//                 console.error('Error fetching data:', error);
-//             }
-//         }
-
-//         fetchData();
-//     }, []);
-
-//     return (
-//         <div className="container mx-auto p-4">
-//             <h1 className="text-3xl font-bold mb-4">Copy Trade Dashboard</h1>
-
-//             <section className="mb-8">
-//                 <h2 className="text-2xl font-semibold mb-4">Top Trades</h2>
-//                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-//                     {trades.map((trade: TradeData) => (
-//                         <TradeCard key={trade.id} trade={trade} />
-//                     ))}
-//                 </div>
-//             </section>
-
-//             <section>
-//                 <h2 className="text-2xl font-semibold mb-4">Transaction History</h2>
-//                 {transactions.length > 0 ? (
-//                     <TransactionHistory transactions={transactions} />
-//                 ) : (
-//                     <div>No transactions found.</div>
-//                 )}
-//             </section>
-//         </div>
-//     );
-// }
