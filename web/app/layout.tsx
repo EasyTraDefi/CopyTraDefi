@@ -1,7 +1,7 @@
 import './global.css';
-import { UiLayout } from '@/components/ui/ui-layout';
-import { ClusterProvider } from '@/components/cluster/cluster-data-access';
-import { SolanaProvider } from '@/components/solana/solana-provider';
+import { UiLayout } from '../components/ui/ui-layout';
+import { ClusterProvider } from '../components/cluster/cluster-data-access';
+import { SolanaProvider } from '../components/solana/solana-provider';
 import { ReactQueryProvider } from './react-query-provider';
 
 export const metadata = {
@@ -13,7 +13,6 @@ const links: { label: string; path: string }[] = [
   { label: 'Account', path: '/account' },
   { label: 'Clusters', path: '/clusters' },
   { label: 'BaseProject Program', path: '/base-project' },
-  { label: 'BlockExplorer', path: '/blockExplorer' },
 ];
 
 export default function RootLayout({
