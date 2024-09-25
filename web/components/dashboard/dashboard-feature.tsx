@@ -9,7 +9,7 @@ export default function DashboardFeature() {
       <AppHero title="Welcome to TraDefi" subtitle="Your Copy Trading Platform on Solana" />
 
       <section className="mt-8">
-        <h2 className="text-3xl font-bold mb-4">What is TraDefi?</h2>
+        <h2 className="text-3xl font-bold mb-4">What's TraDefi?</h2>
         <p className="text-lg text-gray-600 mb-6">
           TraDefi is a revolutionary copy trading platform built on the Solana blockchain. Our mission is to democratize access to successful trading strategies, allowing users to effortlessly replicate trades made by experienced traders.
         </p>
