@@ -6,7 +6,6 @@ import { ReactNode, Suspense, useEffect, useRef } from 'react';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import BlockExplorer from '../blockExplorer/blockExplorer'; // Add this import
 import { AccountChecker } from '../account/account-ui';
 import {
   ClusterChecker,
@@ -137,14 +136,7 @@ export function AppModal({
   );
 }
 
-// export default function BlockExplorerPage() {
-//   return (
-//     <div className="container mx-auto p-4">
-//       <h1 className="text-3xl font-bold mb-4">Block Explorer</h1>
-//       <BlockExplorer />
-//     </div>
-//   );
-// }
+
 
 export function AppHero({
   children,
