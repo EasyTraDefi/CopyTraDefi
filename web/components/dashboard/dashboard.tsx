@@ -8,6 +8,8 @@ import { TradeData } from '~/types/trade-data';
 import { TransactionHistory } from '../transaction-history/transaction-history';
 import { TransactionData } from '~/types/transaction-data';
 import { fetchTrades, fetchTransactions } from '../../utils/apiCalls';
+// 
+
 
 interface DashboardProps { }
 
@@ -29,8 +31,12 @@ export function Dashboard({ }: DashboardProps) {
             }
         }
 
+
+
         fetchData();
     }, []);
+
+
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -69,9 +75,7 @@ export function Dashboard({ }: DashboardProps) {
                 </div>
             </section>
 
-            <footer className="text-center text-sm text-gray-500 mt-8">
-                &copy; 2023 Copy Trade Dashboard. All rights reserved.
-            </footer>
+
         </div>
     );
 }

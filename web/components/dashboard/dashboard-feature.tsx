@@ -56,9 +56,9 @@ export default function DashboardFeature() {
         </Button>
       </section>
 
-      <footer className="text-center text-sm text-gray-500 mt-8">
+      {/* <footer className="text-center text-sm text-gray-500 mt-8">
         &copy; 2023 TraDefi. All rights reserved.
-      </footer>
+      </footer> */}
     </div>
   );
 }
