@@ -1,8 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 
-.env
-.env.example
+
 # compiled output
 dist
 tmp
@@ -49,4 +48,12 @@ anchor/target/.rustc_info.json
 !anchor/target/idl/*.json
 !anchor/target/types/*.ts
 test-ledger
-.yarn
+.yarn.env
+
+
+.env.local
+.env.example
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
