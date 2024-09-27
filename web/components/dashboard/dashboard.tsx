@@ -8,6 +8,7 @@ import { TradeData } from '~/types/trade-data';
 import { TransactionHistory } from '../transaction-history/transaction-history';
 import { TransactionData } from '~/types/transaction-data';
 import { fetchTrades, fetchTransactions } from '../../utils/apiCalls';
+import { RealTimeTradesComponent } from './RealTimeTradesComponent';
 // 
 
 
@@ -75,7 +76,10 @@ export function Dashboard({ }: DashboardProps) {
                 </div>
             </section>
 
-
+            <div className="p-4">
+                <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+                <RealTimeTradesComponent />
+            </div>
         </div>
     );
 }
