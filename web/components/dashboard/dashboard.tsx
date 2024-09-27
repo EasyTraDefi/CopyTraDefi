@@ -41,53 +41,67 @@ export function Dashboard({ }: DashboardProps) {
 
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-4xl font-bold text-center mb-8">Copy Trade Dashboard</h1>
-
-            <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-                <p className="text-xl font-medium mb-4 md:mb-0">Welcome to your Copy Trade Dashboard!</p>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Refresh Data
-                </button>
-            </div>
-
-            <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h2 className="text-2xl font-semibold mb-4">Top Trades</h2>
-                    {trades.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {trades.map((trade: TradeData) => (
-                                <TradeCard key={trade.id} trade={trade} />
-                            ))}
+        <div className="container mx-auto px-4 py-8 min-h-screen bg-gradient-to-b from-skyblue-200 via-cyan-100 to-lightblue-200">
+            {/* Hero Section */}
+            <header className="relative z-10 mb-12">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-600 opacity-50"></div>
+                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center">
+                        <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+                            Welcome to Your Copy Trade Dashboard
+                        </h1>
+                        <p className="mt-4 max-w-2xl text-xl text-white-300">
+                            Track your trades and manage your portfolio efficiently.
+                        </p>
+                        <div className="mt-6">
+                            <button className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                                Refresh Data
+                            </button>
                         </div>
-                    ) : (
-                        <div className="text-center text-gray-600">No trades available.</div>
-                    )}
+                    </div>
                 </div>
+            </header>
 
-                <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h2 className="text-2xl font-semibold mb-4">Transaction History</h2>
-                    {transactions.length > 0 ? (
-                        <div className="overflow-x-auto">
-                            <TransactionHistory transactions={transactions} />
-                        </div>
-                    ) : (
-                        <div className="text-center text-gray-600">No transactions found.</div>
-                    )}
-                </div>
-            </section>
+            {/* Dashboard Sections */}
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Top Trades</h2>
+                        {trades.length > 0 ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-fadeIn">
+                                {trades.map((trade: TradeData) => (
+                                    <TradeCard key={trade.id} trade={trade} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="text-center text-gray-600 animate-pulse">Loading...</div>
+                        )}
+                    </div>
 
-            <div className="p-4">
-                <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-                <RealTimeTradesComponent />
-            </div>
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Transaction History</h2>
+                        {transactions.length > 0 ? (
+                            <div className="overflow-x-auto">
+                                <TransactionHistory transactions={transactions} />
+                            </div>
+                        ) : (
+                            <div className="text-center text-gray-600 animate-pulse">Loading...</div>
+                        )}
+                    </div>
+                </section>
 
+                <section className="space-y-8">
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Real-Time Trades</h2>
+                        <RealTimeTradesComponent />
+                    </div>
 
-            <div className="p-4">
-                <h1 className="text-2xl font-bold mb-4">swap test</h1>
-                <SwapComponent />
-            </div>
-
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Swap Test</h2>
+                        <SwapComponent />
+                    </div>
+                </section>
+            </main>
         </div>
     );
 }
