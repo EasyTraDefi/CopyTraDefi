@@ -48,8 +48,8 @@ export function SwapComponent() {
                 }), {
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-API-KEY': 'BQYA9UfUMoFfml4aVGj3vtBRVJsPogg2',
-                        'Authorization': 'Bearer ory_at_bnfO-lB8W7oojffaIbzoxswdFVLHNbRcEkwUx2FTDGI.TRMdCJVVu5mjczh06POWPBr_m-SNHZ_QMie5j1Cut_s'
+                        'X-API-KEY': process.env.BITQUERY_API_URL,
+                        'Authorization': process.env.BITQUERY_AUTH_TOKEN
                     }
                 });
 

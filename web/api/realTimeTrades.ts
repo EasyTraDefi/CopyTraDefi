@@ -50,8 +50,8 @@ export default async function handler(
       url: 'https://streaming.bitquery.io/eap',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-KEY': 'BQYA9UfUMoFfml4aVGj3vtBRVJsPogg2',
-        'Authorization': 'Bearer ory_at_VInb-kEkno6MMPWHrMJS1hwsQz_clgMc-6PyTfzABiY.ia1mJ2f_ayDGyKJVZ0QSWvFgkvL15FOYWiIbAt3E8LE'
+        'X-API-KEY': process.env.BITQUERY_API_URL,
+        'Authorization': process.env.BITQUERY_AUTH_TOKEN
       },
       data: JSON.stringify({
         query: `
