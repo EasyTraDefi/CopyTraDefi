@@ -1,18 +1,18 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Helius } from 'helius-sdk';
-import { TransactionData } from '~/types/transaction-data';
+import { TradeData } from '../types/trade-data';
 
 
 const HELIUS_API_KEY = process.env.HELIUS_API as string;
 
 const heliusClient = new Helius(HELIUS_API_KEY);
 
-// interface TransactionData {
+// interface TradeData {
 //   id: string;
-//   signature: string;
 //   memeCoinName: string;
-//   amount: number;
-//   type: 'buy' | 'sell';
+//   price: number;
+//   volume: number;
+//   traderAddress: string;
 //   timestamp: number;
 // }
 
@@ -24,18 +24,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 page: 1,
             });
 
-            const transactions: TransactionData[] = response.items.map((tx: any): TransactionData => ({
-                id: tx.id,
-                signature: tx.signature,
-                memeCoinName: tx.mintSymbol,
-                amount: tx.amount,
-                type: tx.type === 'buy' ? 'buy' : 'sell',
-                timestamp: tx.timestamp,
+            const trades: TradeData[] = response.items.map((trade: any): TradeData => ({
+                id: trade.id,
+                memeCoinName: trade.mintSymbol,
+                price: trade.price,
+                volume: trade.volume,
+                traderAddress: trade.traderAddress,
+                timestamp: trade.timestamp,
             }));
 
-            res.status(200).json(transactions);
+            res.status(200).json(trades);
         } catch (error) {
-            console.error('Error fetching transactions:', error);
+            console.error('Error fetching trades:', error);
             res.status(500).json({ message: 'Internal Server Error' });
         }
     } else {
