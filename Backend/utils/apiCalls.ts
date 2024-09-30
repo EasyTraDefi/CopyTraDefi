@@ -78,6 +78,16 @@ export async function getNewTokens(): Promise<any[]> {
 }
 
 
+export async function depositFunds(amount: number): Promise<string> {
+  const response = await axios.post('/api/deposit', { amount });
+  return response.data;
+}
+
+export async function withdrawFunds(amount: number): Promise<string> {
+  const response = await axios.post('/api/withdrawal', { amount });
+  return response.data;
+}
+
 
 
 
