@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { TradeData } from '../types/trade-data';
 import { TransactionData } from '../types/transaction-data';
+import { getAvailableBalance } from './fundManagement';
+import { deductFunds } from './deductFunds';
 
 
-// In apiCalls.ts
 export const fetchTrades = async (): Promise<any[]> => {
   try {
     const response = await axios.post(
@@ -68,6 +69,16 @@ export async function fetchTransactions(): Promise<TransactionData[]> {
 }
 
 export async function executeTrade(trade: TradeData): Promise<any> {
+  // Check if user has sufficient funds
+  const availableBalance = await getAvailableBalance(trade.userId);
+  if (availableBalance < trade.amount) {
+    throw new Error('Insufficient funds');
+  }
+
+  // Deduct funds from user's account
+  await deductFunds(trade.userId, trade.amount);
+
+  // Execute the trade using stored funds
   const response = await axios.post('/api/execute-trade', trade);
   return response.data;
 }

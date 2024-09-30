@@ -2,6 +2,8 @@
 
 export interface TradeData {
     id: string;
+    userId: string;
+    amount: number;
     memeCoinName: string;
     price: number;
     volume: number;
