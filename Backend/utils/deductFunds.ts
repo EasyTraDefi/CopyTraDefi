@@ -1,5 +1,6 @@
+// utils/fundManagement.ts
 
-import { Connection, PublicKey, SystemProgram } from '@solana/web3.js';
+import { Connection, PublicKey, SystemProgram, Transaction } from '@solana/web3.js';
 
 const connection = new Connection('https://api.mainnet-beta.solana.com');
 
@@ -17,11 +18,14 @@ async function deductFunds(userId: string, amount: number): Promise<void> {
         lamports: amountInLamports,
     });
 
+    // Create a new transaction
+    const transaction = new Transaction().add(instruction);
+
     // Send the transaction
-    // const signature = await connection.sendRawTransaction(instruction.serialize());
+    const signature = await connection.sendRawTransaction(transaction.serialize());
 
     // Wait for confirmation
-    // await connection.confirmTransaction(signature);
+    await connection.confirmTransaction(signature);
 
     console.log(`Deduction of ${amount} SOL confirmed`);
 }
