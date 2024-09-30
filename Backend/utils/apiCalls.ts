@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { TradeData } from '~/types/trade-data';
-import { TransactionData } from '~/types/transaction-data';
+import { TradeData } from '../types/trade-data';
+import { TransactionData } from '../types/transaction-data';
 
 
 // In apiCalls.ts

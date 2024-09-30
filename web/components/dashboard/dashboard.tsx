@@ -4,10 +4,10 @@
 
 import { useState, useEffect } from 'react';
 import TradeCard from '../trade-card/trade-card';
-import { TradeData } from '~/types/trade-data';
+import { TradeData } from '../../../Backend/types/trade-data';
 import { TransactionHistory } from '../transaction-history/transaction-history';
-import { TransactionData } from '~/types/transaction-data';
-import { fetchTrades, fetchTransactions } from '../../utils/apiCalls';
+import { TransactionData } from '../../../Backend/types/transaction-data';
+import { fetchTrades, fetchTransactions } from '../../../Backend/utils/apiCalls';
 import { RealTimeTradesComponent } from './RealTimeTradesComponent';
 import { SwapComponent } from './swapComponent';
 // 
