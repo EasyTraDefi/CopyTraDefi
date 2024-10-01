@@ -3,6 +3,7 @@ import { UiLayout } from '../components/ui/ui-layout';
 import { ClusterProvider } from '../components/cluster/cluster-data-access';
 import { SolanaProvider } from '../components/solana/solana-provider';
 import { ReactQueryProvider } from './react-query-provider';
+import PortfolioPage from '~/components/portfolio';
 
 export const metadata = {
   title: 'TraDefi',
@@ -11,8 +12,9 @@ export const metadata = {
 
 const links: { label: string; path: string }[] = [
   { label: 'Account', path: '/account' },
-  { label: 'Clusters', path: '/clusters' },
+  { label: 'Portfolio', path: '/clusters' },
   { label: 'TraDefi', path: '/base-project' },
+
 ];
 
 export default function RootLayout({
