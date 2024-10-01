@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import { TradeData } from '~/types/trade-data';
-import { executeTrade } from '../../utils/apiCalls';
+import { executeTrade } from '../../../Backend/utils/apiCalls';
 
 interface TradeCardProps {
     trade: TradeData;

@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { TradeData } from '~/types/trade-data';
-import { TransactionData } from '~/types/transaction-data';
+import { TradeData } from '../types/trade-data';
+import { TransactionData } from '../types/transaction-data';
+import { getAvailableBalance } from './fundManagement';
+import { deductFunds } from './deductFunds';
 
 
-// In apiCalls.ts
 export const fetchTrades = async (): Promise<any[]> => {
   try {
     const response = await axios.post(
@@ -68,6 +69,16 @@ export async function fetchTransactions(): Promise<TransactionData[]> {
 }
 
 export async function executeTrade(trade: TradeData): Promise<any> {
+  // Check if user has sufficient funds
+  const availableBalance = await getAvailableBalance(trade.userId);
+  if (availableBalance < trade.amount) {
+    throw new Error('Insufficient funds');
+  }
+
+  // Deduct funds from user's account
+  await deductFunds(trade.userId, trade.amount);
+
+  // Execute the trade using stored funds
   const response = await axios.post('/api/execute-trade', trade);
   return response.data;
 }
@@ -77,36 +88,18 @@ export async function getNewTokens(): Promise<any[]> {
   return response.data;
 }
 
-// // utils/apiCalls.ts
 
-// import { Helius } from "helius-sdk";
-// import { TradeData } from '~/types/trade-data';
-// import { TransactionData } from '~/types/transaction-data';
+export async function depositFunds(amount: number): Promise<string> {
+  const response = await axios.post('/api/deposit', { amount });
+  return response.data;
+}
 
-// const HELIUS_API_KEY = process.env.HELIUS_API as string;
+export async function withdrawFunds(amount: number): Promise<string> {
+  const response = await axios.post('/api/withdrawal', { amount });
+  return response.data;
+}
 
-// const heliusClient = new Helius(HELIUS_API_KEY);
 
-// export const fetchTrades = async (): Promise<TradeData[]> => {
-//     const response = await fetch('/api/trades');
-//     return await response.json();
-// };
 
-// export const fetchTransactions = async (): Promise<TransactionData[]> => {
-//     const response = await fetch('/api/transactions');
-//     return await response.json();
-// };
 
-// export const executeTrade = async (trade: TradeData): Promise<string> => {
-//     try {
-//         // Implement the logic to execute the trade using Helius SDK
-//         // This is just a placeholder, you'll need to implement the actual execution logic
-//         console.log('Executing trade:', trade);
 
-//         // Simulating a successful transaction
-//         return '1234567890abcdef';
-//     } catch (error) {
-//         console.error('Error executing trade:', error);
-//         throw error;
-//     }
-// };
