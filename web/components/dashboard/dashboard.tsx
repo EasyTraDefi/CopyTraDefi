@@ -3,21 +3,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import TradeCard from '../trade-card/trade-card';
-import { TradeData } from '../../../Backend/types/trade-data';
-import { TransactionHistory } from '../transaction-history/transaction-history';
-import { TransactionData } from '../../../Backend/types/transaction-data';
-import { RealTimeTradesComponent } from './RealTimeTradesComponent';
-import { SwapComponent } from './swapComponent';
-// 
+
 
 
 interface DashboardProps { }
 
 export function Dashboard({ }: DashboardProps) {
-    const [trades, setTrades] = useState<TradeData[]>([]);
-    const [transactions, setTransactions] = useState<TransactionData[]>([]);
-
 
 
 
@@ -49,57 +40,10 @@ export function Dashboard({ }: DashboardProps) {
 
             {/* Dashboard Sections */}
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Top Trades</h2>
-                        {trades.length > 0 ? (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-fadeIn">
-                                {trades.map((trade: TradeData) => (
-                                    <TradeCard key={trade.id} trade={trade} />
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="text-center text-gray-600 animate-pulse">Loading...</div>
-                        )}
-                    </div>
 
-                    <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Transaction History</h2>
-                        {transactions.length > 0 ? (
-                            <div className="overflow-x-auto">
-                                <TransactionHistory transactions={transactions} />
-                            </div>
-                        ) : (
-                            <div className="text-center text-gray-600 animate-pulse">Loading...</div>
-                        )}
-                    </div>
-                </section>
 
-                <section className="space-y-8">
-                    <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Real-Time Trades</h2>
-                        <RealTimeTradesComponent />
-                    </div>
 
-                    <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Swap Test</h2>
-                        <SwapComponent />
-                    </div>
-                </section>
-                <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col rounded-2xl w-96 bg-[#ffffff] shadow-xl">
-                        <figure className="flex justify-center items-center rounded-2xl">
-                            {/* <Image src="https://tailwind-generator.b-cdn.net/images/card-generator/tailwind-card-generator-card-preview.png" alt="Card Preview" class="rounded-t-2xl"> */}
-                        </figure>
-                        <div className="flex flex-col p-8">
-                            <div className="text-2xl font-bold   text-[#374151] pb-6">Generator</div>
-                            <div className=" text-lg   text-[#374151]">Leverage a graphical editor to create beautiful web components.</div>
-                            <div className="flex justify-end pt-6">
-                                <button className="bg-[#7e22ce] text-[#ffffff] w-full font-bold text-base  p-3 rounded-lg hover:bg-purple-800 active:scale-95 transition-transform transform">Try it out!</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
             </main>
         </div>
     );
