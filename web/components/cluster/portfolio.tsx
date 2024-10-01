@@ -19,7 +19,7 @@ export default function PortfolioPage() {
 
     useEffect(() => {
         if (walletAddress) {
-            console.log('Connected wallet address:', walletAddress.toBase58());
+            console.log('Wallet Connected :)');
         }
     }, [walletAddress]);
 

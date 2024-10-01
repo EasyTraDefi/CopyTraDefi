@@ -31,16 +31,16 @@ export function Dashboard({ }: DashboardProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-skyblue-200 via-cyan-100 to-lightblue-200 flex items-center justify-center">
-            <div className="max-w-4xl w-full p-8 bg-white rounded-lg shadow-xl overflow-hidden">
-                <div className="flex flex-col lg:flex-row gap-8">
+        <div className=" min-h-screen bg-gradient-to-b from-skyblue-200 via-cyan-100 to-lightblue-200 flex items-center justify-center">
+            <div className="max-w-4xl w-full p-32 bg-gray-600 rounded-lg shadow-xl overflow-hidden">
+                <div className="flex flex-col lg:flex-row gap-11 items-center px-4">
                     <div className="lg:w-1/2">
-                        <h1 className="text-4xl font-bold text-center text-gray-900 mb-6">
+                        <h1 className="text-4xl font-bold text-center text-gray-300 mb-6">
                             Welcome to Your Copy Trade Dashboard
                         </h1>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label htmlFor="traderAddress" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="traderAddress" className="block text-sm font-medium text-gray-300">
                                     Enter Trader's Address
                                 </label>
                                 <input
@@ -59,10 +59,10 @@ export function Dashboard({ }: DashboardProps) {
                             </button>
                         </form>
                     </div>
-                    <div className="lg:w-1/2 space-y-4">
+                    <div className="lg:w-1/2 space-y-3">
                         {fundsDeposited ? (
                             <>
-                                <h2 className="text-2xl font-semibold text-gray-800 mb-4">Your Account is Ready</h2>
+                                <h2 className="text-2xl font-semibold text-gray-300 mb-4">Your Account is Ready</h2>
                                 <p className="mb-4">Your funds have been deposited successfully.</p>
                                 <button
                                     onClick={() => router.push('/trade')}
@@ -75,7 +75,7 @@ export function Dashboard({ }: DashboardProps) {
 
                         {copiedTrade && (
                             <section className="bg-white rounded-lg shadow-md p-8 mb-6">
-                                <h2 className="text-2xl font-semibold text-gray-800 mb-4">Trade Copied Successfully</h2>
+                                <h2 className="text-2xl font-semibold text-gray-700 mb-4">Trade Copied Successfully</h2>
                                 <p className="mb-4">The trade has been copied from the trader's address.</p>
                                 <ul className="list-disc list-inside space-y-2 mb-4">
                                     {/* <li>Amount: {copiedTrade?.amount}</li>
