@@ -3,7 +3,6 @@ import { UiLayout } from '../components/ui/ui-layout';
 import { ClusterProvider } from '../components/cluster/cluster-data-access';
 import { SolanaProvider } from '../components/solana/solana-provider';
 import { ReactQueryProvider } from './react-query-provider';
-import PortfolioPage from '~/components/portfolio';
 
 export const metadata = {
   title: 'TraDefi',
@@ -24,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className='bg-gradient-to-b from-skyblue-200 via-cyan-100 to-lightblue-200'>
         <ReactQueryProvider>
           <ClusterProvider>
             <SolanaProvider>
