@@ -2,13 +2,23 @@
 
 import { useState } from 'react';
 
+
+interface Transaction {
+    id: number;
+    amount: number;
+    address: string;
+    timestamp: string;
+    type: 'Deposit' | 'Withdrawal';
+}
+
+
+
 const DepositForm = () => {
     const [amount, setAmount] = useState('');
     const [address, setAddress] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [balance, setBalance] = useState(0);
-    const [transactionHistory, setTransactionHistory] = useState([]);
-
+    const [transactionHistory, setTransactionHistory] = useState<Transaction[]>([]);
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -61,9 +71,7 @@ const DepositForm = () => {
             timestamp: new Date().toLocaleString(),
             type: 'Withdrawal'
         };
-
         setTransactionHistory(prev => [...prev, newTransaction]);
-
         alert('Withdrawal successful!');
         setAmount('');
         setAddress('');
