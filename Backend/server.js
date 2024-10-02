@@ -1,4 +1,5 @@
 // app.js
+// app.js
 import express from 'express';
 import { config } from 'dotenv';
 
@@ -6,6 +7,7 @@ config();
 
 const app = express();
 const port = 3008;
+app.use(express.json());
 app.use(express.json());
 
 app.post('/webhooks', async (req, res) => {
