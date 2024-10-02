@@ -4,6 +4,13 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface DashboardProps { }
+interface Trade {
+    id: number;
+    symbol: string;
+    price: number;
+    volume: number;
+    profit: number;
+}
 
 export function Dashboard({ }: DashboardProps) {
     const [traderAddress, setTraderAddress] = useState('');
@@ -11,11 +18,23 @@ export function Dashboard({ }: DashboardProps) {
     const [copiedTrade, setCopiedTrade] = useState(null);
     const [balance, setBalance] = useState('$1000');
     const [copyAmount, setCopyAmount] = useState('');
+    const [topTrades, setTopTrades] = useState([]);
     const router = useRouter();
 
     useEffect(() => {
         // Fetch user data or initialize state as needed
+        fetchTopTrades(); // Call this function to get top trades
     }, []);
+
+    const fetchTopTrades = async () => {
+        try {
+            const response = await fetch('/api/top-trades'); // Replace with actual API endpoint
+            const data = await response.json();
+            setTopTrades(data.trades);
+        } catch (error) {
+            console.error('Error fetching top trades:', error);
+        }
+    };
 
     const handleDepositFunds = async () => {
         // Implement fund deposit logic here
@@ -23,10 +42,24 @@ export function Dashboard({ }: DashboardProps) {
         setFundsDeposited(true);
     };
 
+    // const handleSubmit = async (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     // Implement trade copying logic here
+    //     // For now, we'll just log the action
+    //     console.log('Copying trade for trader:', traderAddress);
+    //     setCopiedTrade({
+    //         id: '12345',
+    //         amount: copyAmount,
+    //         symbol: 'BTC'
+    //     });
+    // };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Implement trade copying logic here
-        // For now, we'll just log the action
+
+        // Store traderAddress in localStorage
+        localStorage.setItem('traderAddress', traderAddress);
+
         console.log('Copying trade for trader:', traderAddress);
         setCopiedTrade({
             id: '12345',
@@ -35,9 +68,14 @@ export function Dashboard({ }: DashboardProps) {
         });
     };
 
+    const retrievedTraderAddress = localStorage.getItem('traderAddress');
+    console.log("the trader's address :", retrievedTraderAddress)
+
     return (
+
         <div className="min-h-screen bg-gradient-to-b from-skyblue-200 via-cyan-100 to-lightblue-200 flex items-center justify-center">
-            <div className="max-w-4xl w-full p-32 bg-gray-600 rounded-lg shadow-xl overflow-hidden">
+            <div className="max-w-4xl w-full p-32 bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+
                 <div className="flex flex-col lg:flex-row gap-11 items-center px-4">
                     <div className="lg:w-1/2">
                         <h1 className="text-4xl font-bold text-center text-gray-300 mb-6">
@@ -110,6 +148,8 @@ export function Dashboard({ }: DashboardProps) {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }
+
