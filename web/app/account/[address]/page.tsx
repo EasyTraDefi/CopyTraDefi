@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <div className='flex justify-between gap-3'>
       <DepositForm />
-      <AccountDetailFeature />;
+      <AccountDetailFeature />
     </div>
   )
 
