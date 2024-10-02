@@ -5,10 +5,8 @@ import DepositForm from '~/components/depositfunds';
 export default function Page() {
   return (
     <>
-      <div className='flex '>
-        <DepositForm />
-        <PortfolioPage />
-      </div>
+      <PortfolioPage />
+
       <ClusterFeature />
 
 
