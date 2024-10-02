@@ -10,6 +10,7 @@ export function Dashboard({ }: DashboardProps) {
     const [fundsDeposited, setFundsDeposited] = useState(false);
     const [copiedTrade, setCopiedTrade] = useState(null);
     const [balance, setBalance] = useState('$1000');
+    const [copyAmount, setCopyAmount] = useState('');
     const router = useRouter();
 
     useEffect(() => {
@@ -27,11 +28,15 @@ export function Dashboard({ }: DashboardProps) {
         // Implement trade copying logic here
         // For now, we'll just log the action
         console.log('Copying trade for trader:', traderAddress);
-        setCopiedTrade({ id: '12345', amount: '$100', symbol: 'BTC' });
+        setCopiedTrade({
+            id: '12345',
+            amount: copyAmount,
+            symbol: 'BTC'
+        });
     };
 
     return (
-        <div className=" min-h-screen bg-gradient-to-b from-skyblue-200 via-cyan-100 to-lightblue-200 flex items-center justify-center">
+        <div className="min-h-screen bg-gradient-to-b from-skyblue-200 via-cyan-100 to-lightblue-200 flex items-center justify-center">
             <div className="max-w-4xl w-full p-32 bg-gray-600 rounded-lg shadow-xl overflow-hidden">
                 <div className="flex flex-col lg:flex-row gap-11 items-center px-4">
                     <div className="lg:w-1/2">
@@ -48,6 +53,18 @@ export function Dashboard({ }: DashboardProps) {
                                     id="traderAddress"
                                     value={traderAddress}
                                     onChange={(e) => setTraderAddress(e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="copyAmount" className="block text-sm font-medium text-gray-300">
+                                    Enter Amount to Copy
+                                </label>
+                                <input
+                                    type="number"
+                                    id="copyAmount"
+                                    value={copyAmount}
+                                    onChange={(e) => setCopyAmount(e.target.value)}
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
                                 />
                             </div>
@@ -78,8 +95,8 @@ export function Dashboard({ }: DashboardProps) {
                                 <h2 className="text-2xl font-semibold text-gray-700 mb-4">Trade Copied Successfully</h2>
                                 <p className="mb-4">The trade has been copied from the trader's address.</p>
                                 <ul className="list-disc list-inside space-y-2 mb-4">
-                                    {/* <li>Amount: {copiedTrade?.amount}</li>
-                                    <li>Symbol: {copiedTrade?.symbol}</li> */}
+                                    <li>Amount: {copiedTrade.amount}</li>
+                                    <li>Symbol: BTC</li>
                                 </ul>
                                 <p className="mb-4">Current balance: {balance}</p>
                                 <button
