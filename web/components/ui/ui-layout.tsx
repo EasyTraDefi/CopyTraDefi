@@ -14,7 +14,6 @@ import {
 } from '../cluster/cluster-ui';
 import toast, { Toaster } from 'react-hot-toast';
 
-// import PortfolioPage from '../portfolio';
 
 export function UiLayout({
   children,
@@ -75,7 +74,7 @@ export function UiLayout({
               target="_blank"
               rel="noopener noreferrer"
             >
-              &copy; 2023 TraDefi. All rights reserved.
+              &copy; 2024 CopyTraDefi. All rights reserved.
             </a>
           </p>
         </aside>
@@ -141,26 +140,29 @@ export function AppModal({
 
 
 
+
 export function AppHero({
   children,
   title,
   subtitle,
+  className,
 }: {
   children?: ReactNode;
   title: ReactNode;
   subtitle: ReactNode;
+  className?: string;
 }) {
   return (
-    <div className="hero py-[64px]">
+    <div className={`hero h-[300px] bg-base-200 bg-gradient-to-br from-green-400 to-blue-600 text-white ${className}`}>
       <div className="hero-content text-center">
         <div className="max-w-2xl">
           {typeof title === 'string' ? (
-            <h1 className="text-5xl font-bold">{title}</h1>
+            <h1 className="text-5xl font-bold mb-4">{title}</h1>
           ) : (
             title
           )}
           {typeof subtitle === 'string' ? (
-            <p className="py-6">{subtitle}</p>
+            <p className="text-xl mb-8">{subtitle}</p>
           ) : (
             subtitle
           )}
@@ -170,7 +172,6 @@ export function AppHero({
     </div>
   );
 }
-
 export function ellipsify(str = '', len = 4) {
   if (str.length > 30) {
     return (
