@@ -15,9 +15,9 @@ interface Trade {
 export function Dashboard({ }: DashboardProps) {
     const [traderAddress, setTraderAddress] = useState('');
     const [fundsDeposited, setFundsDeposited] = useState(false);
-    const [copiedTrade, setCopiedTrade] = useState<null | { id: string; amount: number; symbol: string }>(null);
+    const [copiedTrade, setCopiedTrade] = useState<null | { id: string; percentage: number; symbol: string }>(null);
     const [balance, setBalance] = useState('$1000');
-    const [copyAmount, setCopyAmount] = useState('');
+    const [copyPercentage, setCopyPercentage] = useState(50); // Default to 50%
     const [topTrades, setTopTrades] = useState([]);
     const router = useRouter();
 
@@ -42,31 +42,14 @@ export function Dashboard({ }: DashboardProps) {
         setFundsDeposited(true);
     };
 
-
-
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-
-    //     // Store traderAddress in localStorage
-    //     localStorage.setItem('traderAddress', traderAddress);
-
-    //     console.log('Copying trade for trader:', traderAddress);
-    //     setCopiedTrade({
-    //         id: '12345',
-    //         amount: copyAmount,
-    //         symbol: 'BTC'
-    //     });
-    // };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const dataToSend = {
             traderAddress,
-            copyAmount: parseFloat(copyAmount),
+            copyPercentage,
             symbol: 'SOL'
         };
-
 
         try {
             const response = await fetch('/api/save-trade-data', {
@@ -87,8 +70,8 @@ export function Dashboard({ }: DashboardProps) {
 
             setCopiedTrade({
                 id: result.id || '12345', // Use the id from the response if available, otherwise use a default
-                amount: parseFloat(copyAmount),
-                symbol: 'BTC'
+                percentage: copyPercentage,
+                symbol: 'SOL'
             });
 
         } catch (error) {
@@ -97,10 +80,7 @@ export function Dashboard({ }: DashboardProps) {
         }
     };
 
-
-
     return (
-
         <div className="min-h-screen bg-gradient-to-b from-skyblue-200 via-cyan-100 to-lightblue-200 flex items-center justify-center">
             <div className="max-w-4xl w-full p-8 bg-gray-900 rounded-3xl shadow-2xl overflow-hidden">
                 <div className="flex flex-col lg:flex-row gap-8 items-center px-6">
@@ -121,17 +101,26 @@ export function Dashboard({ }: DashboardProps) {
                                     className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
                                 />
                             </div>
-                            <div>
-                                <label htmlFor="copyAmount" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Enter Amount to Copy
-                                </label>
+                            <div className="space-y-2">
+                                <div className='flex items-center justify-between'>
+                                    <label htmlFor="copyPercentage" className="block text-sm font-medium text-gray-700 mb-1">
+                                        Copy Percentage
+                                    </label>
+                                    <span className="text-sm">{copyPercentage}%</span>
+                                </div>
+
                                 <input
-                                    type="number"
-                                    id="copyAmount"
-                                    value={copyAmount}
-                                    onChange={(e) => setCopyAmount(e.target.value)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    id="copyPercentage"
+                                    value={copyPercentage}
+                                    onChange={(e) => setCopyPercentage(parseInt(e.target.value))}
+                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                                 />
+                                <progress id="copyPercentage" max="100" value={copyPercentage} className="w-full h-2 bg-red-200 rounded-lg appearance-none cursor-pointer "></progress>
+
                             </div>
                             <button
                                 type="submit"
@@ -162,7 +151,7 @@ export function Dashboard({ }: DashboardProps) {
                                 <ul className="list-disc list-inside space-y-2 mb-4">
                                     <p>ID: {copiedTrade.id}</p>
 
-                                    <li>Amount: {copiedTrade.amount}</li>
+                                    <li>Percentage: {copiedTrade.percentage}%</li>
                                     <p>Symbol: {copiedTrade.symbol}</p>
                                 </ul>
                                 <p className="mb-4">Current balance: {balance}</p>
@@ -180,4 +169,15 @@ export function Dashboard({ }: DashboardProps) {
         </div>
     );
 }
+
+
+
+
+
+
+
+
+
+
+
 
