@@ -15,7 +15,7 @@ interface Trade {
 export function Dashboard({ }: DashboardProps) {
     const [traderAddress, setTraderAddress] = useState('');
     const [fundsDeposited, setFundsDeposited] = useState(false);
-    const [copiedTrade, setCopiedTrade] = useState(null);
+    const [copiedTrade, setCopiedTrade] = useState<null | { id: string; amount: number; symbol: string }>(null);
     const [balance, setBalance] = useState('$1000');
     const [copyAmount, setCopyAmount] = useState('');
     const [topTrades, setTopTrades] = useState([]);
@@ -42,10 +42,14 @@ export function Dashboard({ }: DashboardProps) {
         setFundsDeposited(true);
     };
 
+
+
     // const handleSubmit = async (e: React.FormEvent) => {
     //     e.preventDefault();
-    //     // Implement trade copying logic here
-    //     // For now, we'll just log the action
+
+    //     // Store traderAddress in localStorage
+    //     localStorage.setItem('traderAddress', traderAddress);
+
     //     console.log('Copying trade for trader:', traderAddress);
     //     setCopiedTrade({
     //         id: '12345',
@@ -57,19 +61,43 @@ export function Dashboard({ }: DashboardProps) {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Store traderAddress in localStorage
-        localStorage.setItem('traderAddress', traderAddress);
-
-        console.log('Copying trade for trader:', traderAddress);
-        setCopiedTrade({
-            id: '12345',
-            amount: copyAmount,
+        const dataToSend = {
+            traderAddress,
+            copyAmount: parseFloat(copyAmount),
             symbol: 'BTC'
-        });
+        };
+
+
+        try {
+            const response = await fetch('/api/save-trade-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log('Data saved successfully:', result);
+            alert('Trade data saved successfully!');
+
+            setCopiedTrade({
+                id: result.id || '12345', // Use the id from the response if available, otherwise use a default
+                amount: parseFloat(copyAmount),
+                symbol: 'BTC'
+            });
+
+        } catch (error) {
+            console.error('Error saving data:', error);
+            alert('Failed to save trade data. Please try again.');
+        }
     };
 
-    const retrievedTraderAddress = localStorage.getItem('traderAddress');
-    console.log("the trader's address :", retrievedTraderAddress)
+
 
     return (
 
@@ -132,8 +160,10 @@ export function Dashboard({ }: DashboardProps) {
                                 <h2 className="text-3xl font-semibold text-gray-700 mb-4">Trade Copied Successfully</h2>
                                 <p className="mb-4">The trade has been copied from the trader's address.</p>
                                 <ul className="list-disc list-inside space-y-2 mb-4">
+                                    <p>ID: {copiedTrade.id}</p>
+
                                     <li>Amount: {copiedTrade.amount}</li>
-                                    <li>Symbol: BTC</li>
+                                    <p>Symbol: {copiedTrade.symbol}</p>
                                 </ul>
                                 <p className="mb-4">Current balance: {balance}</p>
                                 <button
