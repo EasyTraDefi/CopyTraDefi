@@ -64,7 +64,7 @@ export function Dashboard({ }: DashboardProps) {
         const dataToSend = {
             traderAddress,
             copyAmount: parseFloat(copyAmount),
-            symbol: 'BTC'
+            symbol: 'SOL'
         };
 
 
