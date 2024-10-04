@@ -10,7 +10,8 @@
     "feature": "nx generate @solana-developers/preset-react:feature",
     "build": "nx build web",
     "dev": "nx serve web",
-    "realtime-trades": "next dev --port 3001"
+    "realtime-trades": "next dev --port 3001",
+    "server": "node run Backend/server.js"
   },
   "private": true,
   "dependencies": {
