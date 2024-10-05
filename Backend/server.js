@@ -2,7 +2,6 @@
 import express from 'express';
 import { config } from 'dotenv';
 import { listnerHandler } from './api/listner.js';
-import { processSwap } from './api/jupiterSwap.js';
 import { swap } from './api/swap.js';
 config();
 
@@ -12,14 +11,14 @@ app.use(express.json());
 
 
 
-processSwap;
+
 
 
 // const Listner = require('./api/listner');
 app.post('/webhookListner', listnerHandler);
 
 
-swap() ;
+swap();
 
 
 // Endpoint for processing swaps
@@ -34,6 +33,7 @@ swap() ;
 //     res.status(500).json({ error: 'Failed to process swap' });
 //   }
 // });
+
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
