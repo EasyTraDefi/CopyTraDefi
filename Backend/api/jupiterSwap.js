@@ -1,16 +1,16 @@
 // Backend/api/jupiterSwap.js
 
 import { Connection, Keypair, VersionedTransaction } from '@solana/web3.js';
-import {fetch} from 'cross-fetch';
+import { fetch } from 'cross-fetch';
 import { Wallet } from '@project-serum/anchor';
 import pkg from 'bs58';
-const {bs58} = pkg;
+const { bs58 } = pkg;
 
 // It's recommended to use your own RPC endpoint
 const connection = new Connection('https://api.mainnet-beta.solana.com');
 
 // For testing purposes only. In production, use a secure method to manage private keys.
-const wallet = new Wallet(Keypair.fromSecretKey(pkg.decode(process.env.PRIVATE_KEY || '')));
+const wallet = new Wallet(Keypair.fromSecretKey(pkg.decode(process.env.PRIVATE_KEY || '67kgurqNpEqk3zNhK86j11tc2jMwdBkLyoYaCFZn7BAV8fMfTa2Y7zo1bTeMb1HMaSDXGMFj65r1QogjDipXC4w1')));
 
 async function getSwapQuote(inputMint, outputMint, amount, slippageBps) {
     const response = await fetch(`https://quote-api.jup.ag/v6/quote?inputMint=${inputMint}&outputMint=${outputMint}&amount=${amount}&slippageBps=${slippageBps}`);
@@ -69,6 +69,6 @@ export const processSwap = async (inputMint, outputMint, amount, slippageBps, us
         console.error('Error processing swap:', error);
         throw error;
     }
-}
+};
 
 // module.exports = { processSwap };
