@@ -1,4 +1,12 @@
-// file: ~/TraDefi/Backend/types/transaction-data.ts
+// export interface Wallet {
+//     publicKey: PublicKey;
+//     balance: number;
+//     availableTokens: number;
+// }
+
+
+const initialDeposit = 10; // Adjust this value as needed
+
 
 export interface TransactionData {
     id: string;

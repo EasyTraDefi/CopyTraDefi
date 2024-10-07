@@ -66,7 +66,7 @@ export function Dashboard({ }: DashboardProps) {
 
             const result = await response.json();
             console.log('Data saved successfully:', result);
-            alert('Trade data saved successfully!');
+            // alert('Trade data saved successfully!');
 
             setCopiedTrade({
                 id: result.id || '12345', // Use the id from the response if available, otherwise use a default
