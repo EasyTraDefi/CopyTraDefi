@@ -9,7 +9,7 @@ const { bs58 } = pkg;
 const connection = new Connection('https://api.devnet.solana.com');
 
 // For testing purposes only. In production, use a secure method to manage private keys.
-const wallet = new Wallet(Keypair.fromSecretKey(pkg.decode(process.env.PRIVATE_KEY || '67kgurqNpEqk3zNhK86j11tc2jMwdBkLyoYaCFZn7BAV8fMfTa2Y7zo1bTeMb1HMaSDXGMFj65r1QogjDipXC4w1')));
+const wallet = new Wallet(Keypair.fromSecretKey(pkg.decode(process.env.PRIVATE_KEY || '')));
 
 export async function processSwap(inputMint, outputMint, amount, slippageBps, userPublicKey) {
     try {

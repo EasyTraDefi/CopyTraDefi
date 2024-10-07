@@ -19,7 +19,7 @@ dotenv.config()
 // This RPC endpoint is only for demonstration purposes so that this example will run.
 const connection = new Connection('https://api.devnet.solana.com');
 
-const wallet = new Wallet(Keypair.fromSecretKey(bs58.decode("67kgurqNpEqk3zNhK86j11tc2jMwdBkLyoYaCFZn7BAV8fMfTa2Y7zo1bTeMb1HMaSDXGMFj65r1QogjDipXC4w1" || '')));
+const wallet = new Wallet(Keypair.fromSecretKey(bs58.decode(process.env.PRIVATE_KEY || '')));
 // Swapping SOL to USDC with input 0.1 SOL and 0.5% slippage
 const quoteResponse = await (
   await fetch('https://quote-api.jup.ag/v6/quote?inputMint=So11111111111111111111111111111111111111112\

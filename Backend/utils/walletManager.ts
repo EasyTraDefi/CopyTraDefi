@@ -9,7 +9,7 @@
 
 // console.log('Environment Variables:');
 // console.log('USER_PUBLIC_KEY:', process.env.USER_PUBLIC_KEY);
-// console.log('WALRUS_PRIVATE_KEY:', '67kgurqNpEqk3zNhK86j11tc2jMwdBkLyoYaCFZn7BAV8fMfTa2Y7zo1bTeMb1HMaSDXGMFj65r1QogjDipXC4w1'?.slice(0, 10) + '...');
+// console.log('WALRUS_PRIVATE_KEY:', process.env.PRIVATE_KEY?.slice(0, 10) + '...');
 
 // const connection = new Connection('https://api.devnet.solana.com');
 
@@ -34,7 +34,7 @@
 
 //         const publicKey = new PublicKey(userPublicKeyStr);
 
-//         const privateKeyString = process.env.WALRUS_PRIVATE_KEY || '67kgurqNpEqk3zNhK86j11tc2jMwdBkLyoYaCFZn7BAV8fMfTa2Y7zo1bTeMb1HMaSDXGMFj65r1QogjDipXC4w1';
+//         const privateKeyString = process.env.PRIVATE_KEY || '';
 //         if (!privateKeyString) {
 //             throw new Error("WALRUS_PRIVATE_KEY environment variable not set");
 //         }
