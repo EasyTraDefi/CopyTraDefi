@@ -11,7 +11,6 @@ interface DashboardProps { }
 
 export function Dashboard({ }: DashboardProps) {
     const [traderAddress, setTraderAddress] = useState('');
-    const [fundsDeposited, setFundsDeposited] = useState(false);
     const [copiedTrade, setCopiedTrade] = useState<null | { user: string; trader: string; percentage: number; symbol: string }>(null);
     // const [balance, setBalance] = useState('');
     const [copyPercentage, setCopyPercentage] = useState(50);
@@ -121,18 +120,6 @@ export function Dashboard({ }: DashboardProps) {
                             </form>
                         </div>
                         <div className="lg:w-1/2 space-y-6">
-                            {fundsDeposited ? (
-                                <div className="bg-white rounded-2xl shadow-lg p-6">
-                                    <h2 className="text-3xl font-semibold text-gray-700 mb-4">Your Account is Ready</h2>
-                                    <p className="mb-4">Your funds have been deposited successfully.</p>
-                                    <button
-                                        onClick={() => router.push('/trade')}
-                                        className="w-full px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out"
-                                    >
-                                        Start Trading
-                                    </button>
-                                </div>
-                            ) : <h1>Not Deposited</h1>}
 
                             {copiedTrade && (
                                 <div className="bg-white rounded-2xl shadow-lg p-6">
@@ -157,7 +144,7 @@ export function Dashboard({ }: DashboardProps) {
                                         )}
                                     </p>
                                     <button
-                                        onClick={() => router.push('/clusters')}
+                                        onClick={() => router.push('/portfolio')}
                                         className="w-full px-6 py-3 text-white bg-gradient-to-r from-green-400 to-blue-600 hover:bg-gradient-to-r from-green-500 to-blue-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out"
                                     >
                                         View Portfolio
