@@ -1,96 +1,61 @@
-# base-project
+# TraDefi
 
 This project is generated with the [create-solana-dapp](https://github.com/solana-developers/create-solana-dapp) generator.
 
 ## Getting Started
 
 ### Prerequisites
-
 - Node v18.18.0 or higher
-
 - Rust v1.77.2 or higher
 - Anchor CLI 0.30.1 or higher
 - Solana CLI 1.18.17 or higher
 
 ### Installation
-
 #### Clone the repo
 
-```shell
-git clone <repo-url>
-cd <repo-name>
+```shell 
+git clone https://github.com/EasyTraDefi/TraDefi.git 
+cd TraDefi
 ```
+
 
 #### Install Dependencies
 
 ```shell
-npm install
+ npm install
 ```
 
 #### Start the web app
-
-```
-npm run dev
+```shell
+ npm run dev
 ```
 
 ## Apps
 
-### anchor
+### Landing Page
+The landing page serves as the main entry point for users. It provides an overview of TraDefi's features and benefits.
 
-This is a Solana program written in Rust using the Anchor framework.
+### Account Page
+The account page allows users to manage their personal accounts, view transaction history, and update profile information.
 
-#### Commands
+### Portfolio Page
+The portfolio page displays users' investment portfolios, showing real-time asset values and performance metrics.
 
-You can use any normal anchor commands. Either move to the `anchor` directory and run the `anchor` command or prefix the command with `npm run`, eg: `npm run anchor`.
+### Tradefi Page
+The tradefi page offers trading functionality, allowing users to buy, sell, and trade various assets within the platform.
 
-#### Sync the program id:
+## Additional Information
 
-Running this command will create a new keypair in the `anchor/target/deploy` directory and save the address to the Anchor config file and update the `declare_id!` macro in the `./src/lib.rs` file of the program.
+- **Technology Stack**: React, TypeScript, Solana, Anchor framework
+- **Deployment**: Deployed on Solana Devnet
+- **Contributing**: Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
 
-You will manually need to update the constant in `anchor/lib/counter-exports.ts` to match the new program id.
+## Contact Us
 
-```shell
-npm run anchor keys sync
-```
+For any inquiries or feedback, please reach out to us at 
+[https://github.com/YassineElBachiri]
+[https://github.com/yahya-beg]
 
-#### Build the program:
+---
 
-```shell
-npm run anchor-build
-```
-
-#### Start the test validator with the program deployed:
-
-```shell
-npm run anchor-localnet
-```
-
-#### Run the tests
-
-```shell
-npm run anchor-test
-```
-
-#### Deploy to Devnet
-
-```shell
-npm run anchor deploy --provider.cluster devnet
-```
-
-### web
-
-This is a React app that uses the Anchor generated client to interact with the Solana program.
-
-#### Commands
-
-Start the web app
-
-```shell
-npm run dev
-```
-
-Build the web app
-
-```shell
-npm run build
-```
+[![License](https://img.shields.io/badge/License-M
