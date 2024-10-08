@@ -33,7 +33,7 @@ cd TraDefi
 ## Apps
 
 ### Landing Page
-The landing page serves as the main entry point for users. It provides an overview of TraDefi's features and benefits.
+The landing page serves as the main entry point for users. It provides an overview of CopyTraDefi's features and benefits.
 
 ![screencapture-localhost-3000-2024-10-08-18_04_24](https://github.com/user-attachments/assets/32b09a72-2275-42cb-8569-06b220de82e3)
 
@@ -46,7 +46,7 @@ The portfolio page displays users' investment portfolios, showing real-time asse
 ![Screenshot 2024-10-08 180341](https://github.com/user-attachments/assets/a46b1dee-2b7c-4037-bc3a-5c5ed39e0726)
 
 ### CopyTradefi Page
-The tradefi page offers trading functionality, allowing users to buy, sell, and trade various assets within the platform.
+The CopyTraDefi page offers trading functionality, allowing users to copy trades from experienced traders within the platform.
 ![Screenshot 2024-10-08 180318](https://github.com/user-attachments/assets/9b18d609-44c8-465e-93e6-423347e15abe)
 
 ## Additional Information
