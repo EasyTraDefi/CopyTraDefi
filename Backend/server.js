@@ -3,22 +3,30 @@ import express from 'express';
 import { config } from 'dotenv';
 import { listnerHandler } from './api/listner.js';
 import { swap } from './api/swap.js';
+import { userInputHandler } from './api/userInput.js';
+import cors from 'cors'; 
 // import { createUserWallet, depositSOL, withdrawSOL, transferSOL } from './utils/walletManager';
 config();
 
 const app = express();
 const port = 3008;
 app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:3000', // Replace with your client-side URL
+  methods: 'GET,POST', // Allow only certain methods (or remove to allow all)
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+}));
 
 
 
 
 
-// const Listner = require('./api/listner');
+
 app.post('/webhookListner', listnerHandler);
 
+app.post('/userData/traders', userInputHandler);
 
-swap();
+// swap();
 
 
 

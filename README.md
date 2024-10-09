@@ -14,8 +14,8 @@ This project is generated with the [create-solana-dapp](https://github.com/solan
 #### Clone the repo
 
 ```shell 
-git clone https://github.com/EasyTraDefi/TraDefi.git 
-cd TraDefi
+git clone https://github.com/EasyTraDefi/CopyTraDefi.git 
+cd CopyTraDefi
 ```
 
 

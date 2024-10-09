@@ -37,7 +37,7 @@ export function Dashboard({ }: DashboardProps) {
         };
 
         try {
-            const response = await fetch('/api/save-trade-data', {
+            const response = await fetch('http://localhost:3008/userData/traders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,6 +52,8 @@ export function Dashboard({ }: DashboardProps) {
             const result = await response.json();
             console.log('Data saved successfully:', result);
             // alert('Trade data saved successfully!');
+
+            console.log("here's the data : ", dataToSend);
 
             setCopiedTrade({
                 user: dataToSend.userAddress,
